@@ -1,17 +1,19 @@
-import { FlatList, Pressable, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 import Constants from "expo-constants"
 import { useState } from 'react';
+import InputCard from './components/InputCard';
+import List from './components/List';
 
 export default function App() {
   const [list, setList] = useState([])
-  const [inputValue, setInputValue] = useState('')
+
 
   const handleRemove = (id) => {
     const updatedArray = list.filter(item => item.id !== id)
     setList(updatedArray)
   }
 
-  const handleAdd = () => {
+  const handleAdd = (inputValue) => {
     const newItem = {
       id: Date.now(),
       task: inputValue,
@@ -26,23 +28,8 @@ export default function App() {
       <StatusBar />
       <View style={styles.main}>
         <Text>TO-DO list</Text>
-        <View style={styles.card}>
-          <TextInput placeholder='Nueva tarea' onChangeText={(value) => setInputValue(value)} />
-          <Pressable onPress={handleAdd}>
-            <Text>Agregar</Text>
-          </Pressable>
-        </View>
-        <FlatList
-          data={list}
-          renderItem={({ item }) => (
-            <View>
-              <Text style={styles.card}>{item.task}</Text>
-              <Pressable onPress={() => handleRemove(item.id) }>
-                <Text>Borrar</Text>
-              </Pressable>
-            </View>
-          )}
-          keyExtractor={item => item.id} />
+        <InputCard handleAdd={handleAdd} />
+        <List list={list} handleRemove={handleRemove} />
         <Text>App by nkrein</Text>
       </View>
     </View>
@@ -61,13 +48,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-  card: {
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    width: '80%',
-    margin: 15
-  },
+  }
 });
