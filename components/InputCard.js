@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Pressable, Text, TextInput, View, StyleSheet } from "react-native"
+import { PALETTE } from "../utils/colorPalette"
 
 const InputCard = ({ handleAdd }) => {
   const [inputValue, setInputValue] = useState('')
@@ -18,25 +19,26 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-between',
     alignItems: 'center',
-    width: '100%',
+    width: '90%',
     margin: 15,
     padding: 15,
-    backgroundColor: 'gray',
+    backgroundColor: PALETTE.paynesGray,
     borderRadius: 10
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'coral',
-    borderRadius: '50%',
+    backgroundColor: PALETTE.richBlack50,
+    borderRadius: 10,
     width: 30,
     height: 30
   },
   input : {
-    backgroundColor: 'beige',
-    width: '60%',
+    backgroundColor: PALETTE.airBlue,
+    color: PALETTE.richBlack,
+    width: '80%',
     padding: 5,
     borderRadius: 5
   }

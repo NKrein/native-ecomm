@@ -3,14 +3,17 @@ import Constants from "expo-constants"
 import { useState } from 'react';
 import InputCard from './components/InputCard';
 import List from './components/List';
+import ModalConfirm from './components/ModalConfirm';
+import { PALETTE } from './utils/colorPalette';
 
 export default function App() {
   const [list, setList] = useState([])
-
+  const [selectedItem, setSelectedItem] = useState({});
 
   const handleRemove = (id) => {
     const updatedArray = list.filter(item => item.id !== id)
     setList(updatedArray)
+    setSelectedItem({})
   }
 
   const handleAdd = (inputValue) => {
@@ -23,15 +26,22 @@ export default function App() {
     setList(updatedArray)
   }
 
+  const handleModalClose = () => setSelectedItem({})
+  const handleItemSelect = (item) => setSelectedItem(item)
+
   return (
     <View style={styles.container}>
       <StatusBar />
       <View style={styles.main}>
         <Text>TO-DO list</Text>
         <InputCard handleAdd={handleAdd} />
-        <List list={list} handleRemove={handleRemove} />
+        <List list={list} handleItemSelect={handleItemSelect}/>
         <Text>App by nkrein</Text>
       </View>
+      <ModalConfirm
+        handleModalClose={handleModalClose}
+        handleRemove={handleRemove}
+        selectedItem={selectedItem} />
     </View>
   );
 }
@@ -39,9 +49,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    backgroundColor: PALETTE.airBlue,
   },
   main: {
     marginTop: Constants.statusBarHeight,

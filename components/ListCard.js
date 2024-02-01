@@ -1,11 +1,12 @@
 import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { PALETTE } from '../utils/colorPalette';
 
-const ListCard = ({ item, handleRemove }) => {
+const ListCard = ({ item, handleItemSelect }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{item.task}</Text>
-      <Pressable style={styles.button} onPress={() => handleRemove(item.id)}>
+      <Pressable style={styles.button} onPress={() => handleItemSelect(item)}>
         <Text>🗑️</Text>
       </Pressable>
     </View>
@@ -14,24 +15,27 @@ const ListCard = ({ item, handleRemove }) => {
 
 const styles = StyleSheet.create({
   container: {
+    alignSelf: 'center',
     flexDirection: 'row',
     flexWrap: 'nowrap',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    width: '100%',
-    marginBottom: 15,
+    width: '90%',
+    marginHorizontal: 15,
+    marginVertical: 10,
     padding: 15,
-    backgroundColor: 'gray',
+    backgroundColor: PALETTE.paynesGray,
     borderRadius: 10,
   },
   text: {
     flex: 1,
+    color: PALETTE.richBlack,
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'coral',
-    borderRadius: '50%',
+    backgroundColor: PALETTE.richBlack50,
+    borderRadius: 10,
     width: 30,
     height: 30,
     marginLeft: 10
