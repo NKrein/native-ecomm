@@ -1,17 +1,17 @@
 export const PALETTE = {
-  richBlack: '#171a21',
-  paynesGray: '#617073',
-  airBlue: '#7a93ac',
-  jordyBlue: '#92bcea',
+  eerieBlack: '#252422',
+  timberwolf: '#ccc5b9',
+  flame: '#eb5e28',
+  white: '#fffcf2',
 
-  richBlack80: '#171a21cc',
-  paynesGray80: '#617073cc',
-  airBlue80: '#7a93accc',
-  jordyBlue80: '#92bcea80',
+  eerieBlack80: '#252422cc',
+  timberwolf80: '#ccc5b9cc',
+  flame80: '#eb5e28cc',
+  white80: '#fffcf2cc',
 
-  richBlack50: '#171a2180',
-  paynesGray50: '#61707380',
-  airBlue50: '#7a93ac80',
-  jordyBlue50: '#92bcea80',
+  eerieBlack50: '#25242280',
+  timberwolf50: '#ccc5b980',
+  flame50: '#eb5e2880',
+  white50: '#fffcf280',
 
 }

@@ -49,7 +49,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: PALETTE.airBlue,
+    backgroundColor: PALETTE.white,
   },
   main: {
     marginTop: Constants.statusBarHeight,

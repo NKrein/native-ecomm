@@ -1,15 +1,25 @@
 import { useState } from "react"
-import { Pressable, Text, TextInput, View, StyleSheet } from "react-native"
+import { Pressable, Text, TextInput, View, StyleSheet, Image } from "react-native"
 import { PALETTE } from "../utils/colorPalette"
+import addIcon from '../assets/icon-add-flame.png'
 
 const InputCard = ({ handleAdd }) => {
   const [inputValue, setInputValue] = useState('')
 
+  const handlePress = () => {
+    handleAdd(inputValue)
+    setInputValue('')
+  }
+
   return (
     <View style={styles.container}>
-      <TextInput style={styles.input} placeholder='Nueva tarea' onChangeText={(value) => setInputValue(value)} />
-      <Pressable style={styles.button} onPress={() => handleAdd(inputValue)}>
-        <Text>🚀</Text>
+      <TextInput
+        style={styles.input}
+        placeholder='Nueva tarea'
+        onChangeText={(value) => setInputValue(value)}
+        value={inputValue} />
+      <Pressable style={styles.button} onPress={handlePress}>
+        <Image style={styles.icon} source={addIcon} />
       </Pressable>
     </View>
   )
@@ -24,23 +34,31 @@ const styles = StyleSheet.create({
     width: '90%',
     margin: 15,
     padding: 15,
-    backgroundColor: PALETTE.paynesGray,
+    backgroundColor: PALETTE.timberwolf,
     borderRadius: 10
   },
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: PALETTE.richBlack50,
+    backgroundColor: PALETTE.white,
+    borderColor: PALETTE.flame,
+    borderWidth: 2,
     borderRadius: 10,
-    width: 30,
-    height: 30
+    padding: 10,
+    minWidth: 40,
+    minHeight: 40,
   },
-  input : {
-    backgroundColor: PALETTE.airBlue,
-    color: PALETTE.richBlack,
+  input: {
+    backgroundColor: PALETTE.white,
+    color: PALETTE.eerieBlack,
     width: '80%',
     padding: 5,
     borderRadius: 5
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    objectFit: 'contain'
   }
 });
 

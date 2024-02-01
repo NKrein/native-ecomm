@@ -31,11 +31,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
-    backgroundColor: PALETTE.richBlack50
+    backgroundColor: PALETTE.eerieBlack50
   },
   modalView: {
     margin: 20,
-    backgroundColor: PALETTE.airBlue,
+    backgroundColor: PALETTE.white,
     borderRadius: 20,
     padding: 35,
     alignItems: 'center',
@@ -47,17 +47,21 @@ const styles = StyleSheet.create({
   button: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: PALETTE.richBlack50,
+    backgroundColor: PALETTE.white,
+    borderColor: PALETTE.flame,
+    borderWidth: 2,
     borderRadius: 10,
-    width: 30,
-    height: 30,
+    minWidth: 40,
+    minHeight: 40,
     margin: 5
   },
   modalText: {
-    color: PALETTE.richBlack,
+    color: PALETTE.eerieBlack,
+    marginBottom: 10
   },
   buttonText: {
-    color: PALETTE.airBlue,
+    color: PALETTE.flame,
+    padding: 10,
   }
 });
 
