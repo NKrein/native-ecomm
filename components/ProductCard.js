@@ -1,16 +1,18 @@
 import { Image, StyleSheet, Text, View } from 'react-native'
 import { PALETTE } from '../utils/colorPalette'
+import Counter from './Counter'
 
 const ProductCard = ({ item }) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
-        <Image 
+        <Image
           style={styles.image}
           resizeMode='contain'
-          source={{ uri: item.image}}/>
+          source={{ uri: item.image }} />
         <Text style={styles.text}>{item.name}</Text>
         <Text style={styles.text}>${item.price}</Text>
+        <Counter item={item} short />
       </View>
     </View>
   )
@@ -20,7 +22,7 @@ export default ProductCard
 
 const styles = StyleSheet.create({
   container: {
-    height: 225,
+    height: 245,
     width: '50%',
     justifyContent: 'center',
     alignItems: 'center'

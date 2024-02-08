@@ -1,4 +1,4 @@
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
+import { KeyboardAvoidingView, Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
 import Constants from "expo-constants"
 import { useState } from 'react';
 import { PALETTE } from './utils/colorPalette';
@@ -18,16 +18,20 @@ export default function App() {
   const handleBack = () => setSelectedCategory({})
 
   return (
-    <View style={styles.container}>
-      <StatusBar />
-      <View style={styles.main}>
-        {selectedCategory.id
-          ? <ItemListCategories category={selectedCategory} handleBack={handleBack}/>
-          : <Home handleCategorySelect={setSelectedCategory} />
-        }
-        <Text>App by nkrein</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
+      <View style={styles.container}>
+        <StatusBar />
+        <View style={styles.main}>
+          {selectedCategory.id
+            ? <ItemListCategories category={selectedCategory} handleBack={handleBack} />
+            : <Home handleCategorySelect={setSelectedCategory} />
+          }
+          <Text>App by nkrein</Text>
+        </View>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 

@@ -22,8 +22,7 @@ const ItemListCategories = ({ category, handleBack }) => {
 
   return (
     <View style={styles.constainer}>
-      {/* Search */}
-      <Header title={category.title || 'Todos los productos'} handleBack={handleBack}/>
+      <Header title={category.title || 'Todos los productos'} handleBack={handleBack} />
       <FlatList
         numColumns={2}
         data={products}
