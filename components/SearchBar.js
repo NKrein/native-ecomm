@@ -1,13 +1,13 @@
 import { useState } from "react"
 import { Pressable, Text, TextInput, View, StyleSheet, Image } from "react-native"
 import { PALETTE } from "../utils/colorPalette"
-import addIcon from '../assets/icon-add-flame.png'
+import addIcon from '../assets/icon-search-flame.png'
 
-const InputCard = ({ handleAdd }) => {
+const SearchBar = ({ handleSearch }) => {
   const [inputValue, setInputValue] = useState('')
 
   const handlePress = () => {
-    handleAdd(inputValue)
+    handleSearch(inputValue)
     setInputValue('')
   }
 
@@ -16,7 +16,7 @@ const InputCard = ({ handleAdd }) => {
       <TextInput
         style={styles.input}
         placeholder='Nueva tarea'
-        onChangeText={(value) => setInputValue(value)}
+        onChangeText={setInputValue}
         value={inputValue} />
       <Pressable style={styles.button} onPress={handlePress}>
         <Image style={styles.icon} source={addIcon} />
@@ -56,11 +56,11 @@ const styles = StyleSheet.create({
     borderRadius: 5
   },
   icon: {
-    width: 20,
-    height: 20,
+    width: 25,
+    height: 25,
     objectFit: 'contain'
   }
 });
 
 
-export default InputCard
+export default SearchBar

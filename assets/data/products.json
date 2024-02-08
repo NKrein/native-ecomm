@@ -1,0 +1,518 @@
+[
+  {
+    "id": "18EmHc0oqE4fvfr9Gm9W",
+    "name": "Golden Sunrise",
+    "description": "A smooth and bright coffee with a citrusy kick. Sourced from the rolling hills of Africa.",
+    "image": "https://iili.io/H8Y7WEg.webp",
+    "region": "Africa",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "flavor_profile": [
+      "Citrus"
+    ],
+    "weight": 500,
+    "isAvailable": true,
+    "stock": 0,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 295000000
+    },
+    "roast_level": 2,
+    "price": 10.99
+  },
+  {
+    "id": "8aoKhT1hw05wEwqS9344",
+    "grind_option": [
+      "Whole bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "isAvailable": true,
+    "image": "https://iili.io/H8Y7gGn.webp",
+    "weight": 500,
+    "flavor_profile": [
+      "Nutty",
+      "Smooth"
+    ],
+    "name": "Walnut Wonder",
+    "stock": 6,
+    "price": 9.99,
+    "description": "A smooth and nutty coffee from the slopes of South America.",
+    "roast_level": 3,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 512000000
+    },
+    "region": "South America"
+  },
+  {
+    "id": "AX1TljJGMwWNEdsGDnXu",
+    "region": "Asia Pacific",
+    "image": "https://iili.io/H8Y7GQ1.webp",
+    "price": "8.99",
+    "description": "A light and refreshing coffee from the shores of the Asia Pacific, with a subtle coconut flavor.",
+    "flavor_profile": [
+      "Coconut"
+    ],
+    "stock": 10,
+    "roast_level": 2,
+    "isAvailable": true,
+    "grind_option": [
+      "Whole Bean",
+      "Filter"
+    ],
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 907000000
+    },
+    "weight": 500,
+    "name": "Coconut Kiss"
+  },
+  {
+    "id": "F8icyLjq9sUexiFu5TuJ",
+    "stock": 10,
+    "price": 10.99,
+    "name": "Andean Almond",
+    "weight": 500,
+    "image": "https://iili.io/H8Y5Sgj.webp",
+    "region": "South America",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter"
+    ],
+    "description": "A smooth and mellow coffee from the mountains of South America, with hints of almond and toffee.",
+    "flavor_profile": [
+      "Almond",
+      "Toffee"
+    ],
+    "roast_level": 3,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 628000000
+    },
+    "isAvailable": true
+  },
+  {
+    "id": "FoXwuCuANVam9d9Hp1Zy",
+    "price": 12.99,
+    "weight": 500,
+    "description": "A bold and smoky blend with notes of dark chocolate and molasses.",
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 876000000
+    },
+    "stock": 10,
+    "name": "Wildfire",
+    "flavor_profile": [
+      "Dark Chocolate",
+      "Molasses"
+    ],
+    "image": "https://iili.io/H8Y7r4s.webp",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "region": "Africa",
+    "isAvailable": true,
+    "roast_level": 5
+  },
+  {
+    "id": "H0ucEzuDmeJQf5Dp0vHf",
+    "isAvailable": true,
+    "stock": 10,
+    "price": 12.99,
+    "description": "A light and fruity coffee with notes of blueberry and citrus. Grown in the highlands of Ethiopia, this coffee is sure to brighten up your morning.",
+    "name": "Ethiopian Yirgacheffe",
+    "image": "https://iili.io/H8Y7VCF.webp",
+    "region": "Africa",
+    "grind_option": [
+      "Whole bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "flavor_profile": [
+      "Blueberry",
+      "Citrus"
+    ],
+    "weight": 500,
+    "roast_level": 2,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 815000000
+    }
+  },
+  {
+    "id": "KyhsXjCimr0T1JaqGaSm",
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 691000000
+    },
+    "description": "A medium roast coffee with a smooth, nutty flavor and a hint of caramel. Inspired by your favorite coffee shop!",
+    "region": "Central America",
+    "stock": 4,
+    "isAvailable": true,
+    "flavor_profile": [
+      "Nutty",
+      "Caramel"
+    ],
+    "roast_level": 3,
+    "name": "Central Perk",
+    "price": "9.99",
+    "grind_option": [
+      "Whole bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "weight": 500,
+    "image": "https://iili.io/H8Y7aYx.webp"
+  },
+  {
+    "id": "LhFLXKVXwP54560MV4Yi",
+    "isAvailable": false,
+    "grind_option": [
+      "Whole bean",
+      "Filter"
+    ],
+    "timestamp": {
+      "seconds": 1706815264,
+      "nanoseconds": 978000000
+    },
+    "weight": 500,
+    "price": 11.99,
+    "name": "Breezy Beans",
+    "flavor_profile": [
+      "Citrusy"
+    ],
+    "region": "Central America",
+    "stock": 10,
+    "description": "This coffee blend is made from beans sourced from Honduras and Costa Rica. It is a light roast coffee with a bright and citrusy flavor profile. It is perfect for pour-over and drip coffee brewing methods.",
+    "image": "https://iili.io/H8Y7lpV.webp",
+    "roast_level": 1
+  },
+  {
+    "id": "TMttIc6D6nYVgxw73bHj",
+    "name": "Lazy Days",
+    "price": 9.99,
+    "roast_level": 3,
+    "isAvailable": true,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 456000000
+    },
+    "stock": 10,
+    "weight": 500,
+    "grind_option": [
+      "Whole bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "description": "A medium-bodied coffee with a sweet and nutty flavor. Grown in the lush regions of Brazil, this coffee is perfect for a lazy afternoon.",
+    "image": "https://iili.io/H8Y7NvR.webp",
+    "flavor_profile": [
+      "Hazelnut",
+      "Chocolate",
+      "Caramel"
+    ],
+    "region": "South America"
+  },
+  {
+    "id": "UI1b1iDUNE5IBxnPPkvZ",
+    "roast_level": 4,
+    "weight": 500,
+    "price": 12.99,
+    "isAvailable": true,
+    "stock": 10,
+    "image": "https://iili.io/H8Y7vjI.webp",
+    "grind_option": [
+      "Whole Bean",
+      "Filter",
+      "Espresso"
+    ],
+    "name": "Savanna Noir",
+    "description": "A bold and rich coffee from the African savanna, with notes of dark chocolate and blackcurrant.",
+    "flavor_profile": [
+      "Dark Chocolate",
+      "Blackcurrant"
+    ],
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 362000000
+    },
+    "region": "Africa"
+  },
+  {
+    "id": "UTU0orDQABwm1lgWHLk6",
+    "isAvailable": true,
+    "region": "Asia Pacific",
+    "roast_level": 5,
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "price": 8.99,
+    "description": "Get your day started with the bold and earthy flavors of Sumatra. Grown on the lush tropical slopes of the Gayo Highlands, this coffee is known for its full body, low acidity, and notes of dark chocolate and smoke.",
+    "name": "Sumatra Blend",
+    "weight": 500,
+    "stock": 10,
+    "flavor_profile": [
+      "Dark Chocolate",
+      "Smoke"
+    ],
+    "image": "https://iili.io/H8Y7UCX.webp",
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 175000000
+    }
+  },
+  {
+    "id": "ihIyCgvetgurCxDi1GfT",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "region": "Middle East",
+    "flavor_profile": [
+      "Cardamom",
+      "Cinnamon"
+    ],
+    "name": "Arabian Nights",
+    "price": 13.99,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 233000000
+    },
+    "roast_level": 4,
+    "description": "A bold and spicy coffee from the Middle East, with notes of cardamom and cinnamon.",
+    "stock": 10,
+    "weight": 500,
+    "image": "https://iili.io/H8Y7ckQ.webp",
+    "isAvailable": true
+  },
+  {
+    "id": "nE6Gt08qJtuhZTv6q2fv",
+    "weight": 500,
+    "name": "Rainforest Rhapsody",
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 573000000
+    },
+    "region": "South America",
+    "image": "https://iili.io/H8Y7kTN.webp",
+    "stock": 10,
+    "roast_level": 2,
+    "description": "An earthy and complex coffee with notes of toasted nuts and caramel. Sustainably grown in the rainforests of South America.",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "flavor_profile": [
+      "Citrus"
+    ],
+    "isAvailable": true,
+    "price": 14.99
+  },
+  {
+    "id": "o57laDBa5EGaxrOCr7As",
+    "image": "https://iili.io/H8Y7j3J.webp",
+    "roast_level": 1,
+    "name": "Himalayan Heights",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Pour Over"
+    ],
+    "flavor_profile": [
+      "Floral",
+      "Citrus",
+      "Honey"
+    ],
+    "stock": 10,
+    "region": "Asia Pacific",
+    "description": "Grown on the steep slopes of the Himalayan Mountains, this coffee is known for its bright acidity and delicate floral notes. This light roast is perfect for those who prefer a more delicate flavor profile.",
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 41000000
+    },
+    "price": 12.99,
+    "isAvailable": true,
+    "weight": 500
+  },
+  {
+    "id": "qKmkaW9tS85esttRpvu8",
+    "flavor_profile": [
+      "Spicy",
+      "Earthy",
+      "Cinnamon",
+      "Clove"
+    ],
+    "weight": 500,
+    "grind_option": [
+      "Whole bean",
+      "Filter",
+      "French press"
+    ],
+    "timestamp": {
+      "seconds": 1706815266,
+      "nanoseconds": 62000000
+    },
+    "roast_level": 4,
+    "name": "Indo-Viet Roast",
+    "stock": 10,
+    "image": "https://iili.io/H8Y7wYv.webp",
+    "description": "This coffee blend is made from beans sourced from Indonesia and Vietnam. It is a medium-dark roast coffee with a spicy and earthy flavor profile, with notes of cinnamon and clove. It is perfect for drip and French press brewing methods.",
+    "isAvailable": true,
+    "price": 13.99,
+    "region": "Asia Pacific"
+  },
+  {
+    "id": "qxW2YjGCYpTfXLPwLp9p",
+    "image": "https://iili.io/H8Y7X4a.webp",
+    "roast_level": 3,
+    "price": 9.99,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 971000000
+    },
+    "region": "Central America",
+    "description": "A smooth and earthy blend with notes of cocoa and hazelnut.",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "name": "Harvest Moon",
+    "isAvailable": true,
+    "stock": 10,
+    "weight": 500,
+    "flavor_profile": [
+      "Cocoa",
+      "Hazelnut"
+    ]
+  },
+  {
+    "id": "sRSJWTpcqMqE7NzWnepX",
+    "price": 12.99,
+    "region": "Central America",
+    "timestamp": {
+      "seconds": 1706815266,
+      "nanoseconds": 32000000
+    },
+    "description": "A rich, full-bodied coffee with notes of dark chocolate and black cherry. Grown on the slopes of a mist-covered mountain in Central America.",
+    "image": "https://iili.io/H8Y78Qt.webp",
+    "weight": 500,
+    "flavor_profile": [
+      "Dark Chocolate",
+      "Black Cherry"
+    ],
+    "stock": 10,
+    "name": "Signature Blend",
+    "isAvailable": true,
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "roast_level": 3
+  },
+  {
+    "id": "utsGux5rdlC2JQpZSAUj",
+    "stock": 10,
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "name": "Midnight Mocha",
+    "roast_level": 4,
+    "image": "https://iili.io/H8Y7Opp.webp",
+    "region": "South America",
+    "description": "Indulge in the rich, velvety flavors of this decadent mocha blend. Dark chocolate and espresso notes are combined with a touch of vanilla for a luxurious coffee experience.",
+    "price": 14.99,
+    "isAvailable": true,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 107000000
+    },
+    "flavor_profile": [
+      "Dark Chocolate",
+      "Espresso",
+      "Vanilla"
+    ],
+    "weight": 500
+  },
+  {
+    "id": "x0WadVg4hl4yBU3XHRx9",
+    "weight": 500,
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "region": "Asia Pacific",
+    "isAvailable": true,
+    "stock": 10,
+    "description": "Escape to the tropical paradise of Bali with this smooth and mellow blend. Grown on small family farms, this coffee is shade-grown and hand-picked for a rich and nuanced flavor profile. Notes of milk chocolate, hazelnut, and a hint of tropical fruit.",
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 420000000
+    },
+    "flavor_profile": [
+      "Milk Chocolate",
+      "Hazelnut",
+      "Tropical Fruit"
+    ],
+    "image": "https://iili.io/H8Y71TB.webp",
+    "roast_level": 3,
+    "price": 11.99,
+    "name": "Bali Bliss"
+  },
+  {
+    "id": "zNqCMFg0dUlAomgRn6nw",
+    "roast_level": 2,
+    "region": "South America",
+    "weight": 500,
+    "flavor_profile": [
+      "Chocolate",
+      "Caramel",
+      "Fruit"
+    ],
+    "price": 12.99,
+    "stock": 10,
+    "timestamp": {
+      "seconds": 1706815265,
+      "nanoseconds": 755000000
+    },
+    "isAvailable": true,
+    "description": "This coffee boasts a smooth and balanced flavor, with notes of chocolate, caramel, and a hint of fruit. It has a medium body and a subtle acidity that will leave you feeling refreshed and energized.",
+    "name": "Chilean Charm",
+    "grind_option": [
+      "Whole Bean",
+      "Cafetiere",
+      "Filter",
+      "Espresso"
+    ],
+    "image": "https://iili.io/H8Y7EhP.webp"
+  }
+]
