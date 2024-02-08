@@ -5,20 +5,26 @@ import { PALETTE } from './utils/colorPalette';
 import { useFonts } from 'expo-font';
 import { fonts } from './utils/fonts';
 import Home from './sceens/Home';
+import ItemListCategories from './sceens/ItemListCategories';
 
 export default function App() {
-  const [selectedItem, setSelectedItem] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState({});
   const [fontsLoaded] = useFonts(fonts)
 
   if (!fontsLoaded) {
     return null
   }
 
+  const handleBack = () => setSelectedCategory({})
+
   return (
     <View style={styles.container}>
       <StatusBar />
       <View style={styles.main}>
-        <Home />
+        {selectedCategory.id
+          ? <ItemListCategories category={selectedCategory} handleBack={handleBack}/>
+          : <Home handleCategorySelect={setSelectedCategory} />
+        }
         <Text>App by nkrein</Text>
       </View>
     </View>

@@ -3,13 +3,13 @@ import Header from '../components/Header'
 import categoriesList from '../assets/data/categories.json'
 import CategoryCard from '../components/CategoryCard'
 
-const Home = () => {
+const Home = ({ handleCategorySelect }) => {
   return (
     <View style={styles.constainer}>
       <Header title={'Inicio'} />
       <FlatList
         data={categoriesList}
-        renderItem={({item}) => <CategoryCard item={item} handlePress={console.log}/>}
+        renderItem={({item}) => <CategoryCard item={item} handlePress={handleCategorySelect}/>}
         keyExtractor={item => item.id} />
     </View>
   )

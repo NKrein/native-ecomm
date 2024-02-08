@@ -1,25 +1,32 @@
 import { useState } from "react"
 import { Pressable, Text, TextInput, View, StyleSheet, Image } from "react-native"
 import { PALETTE } from "../utils/colorPalette"
-import addIcon from '../assets/icon-search-flame.png'
+import searchIcon from '../assets/icons/icon-search-flame.png'
+import deleteIcon from '../assets/icons/icon-delete-back-line.png'
 
 const SearchBar = ({ handleSearch }) => {
   const [inputValue, setInputValue] = useState('')
 
-  const handlePress = () => {
-    handleSearch(inputValue)
+  const handlePress = () => handleSearch(inputValue)
+
+  const handleBackLine = () => {
     setInputValue('')
+    handleSearch('')
   }
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder='Nueva tarea'
-        onChangeText={setInputValue}
-        value={inputValue} />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          onChangeText={setInputValue}
+          value={inputValue} />
+        <Pressable style={styles.backLineButton} onPress={handleBackLine}>
+          {inputValue && <Image style={styles.icon} source={deleteIcon} />}
+        </Pressable>
+      </View>
       <Pressable style={styles.button} onPress={handlePress}>
-        <Image style={styles.icon} source={addIcon} />
+        <Image style={styles.icon} source={searchIcon} />
       </Pressable>
     </View>
   )
@@ -31,8 +38,8 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '90%',
-    margin: 15,
+    width: '100%',
+    marginVertical: 15,
     padding: 15,
     backgroundColor: PALETTE.timberwolf,
     borderRadius: 10
@@ -42,23 +49,39 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: PALETTE.white,
     borderColor: PALETTE.flame,
-    borderWidth: 2,
+    borderWidth: 1,
     borderRadius: 10,
-    padding: 10,
     minWidth: 40,
     minHeight: 40,
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    width: '80%',
+    height: 32,
   },
   input: {
     backgroundColor: PALETTE.white,
     color: PALETTE.eerieBlack,
-    width: '80%',
+    width: '90%',
     padding: 5,
-    borderRadius: 5
+    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: 5,
+    height: 32,
+  },
+  backLineButton: {
+    width: '10%',
+    backgroundColor: PALETTE.white,
+    borderBottomRightRadius: 5,
+    borderTopRightRadius: 5,
+    height: 32,
+    width: 32,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   icon: {
     width: 25,
     height: 25,
-    objectFit: 'contain'
+    resizeMode: 'contain'
   }
 });
 
