@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
-import { FlatList, StyleSheet, Text, View } from 'react-native'
+import { FlatList, StyleSheet, View } from 'react-native'
 import productsList from '../assets/data/products.json'
 import SearchBar from '../components/SearchBar'
 import ProductCard from '../components/ProductCard'
-import Header from '../components/Header'
+import { PALETTE } from '../utils/colorPalette'
 
-const ItemListCategories = ({ category, handleBack }) => {
+const ItemListCategories = ({ route }) => {
 
   const [products, setProducts] = useState([])
   const [keyword, setKeyword] = useState('')
+
+  const { category } = route.params
 
   const handleSearch = (value) => setKeyword(value)
 
@@ -21,14 +23,15 @@ const ItemListCategories = ({ category, handleBack }) => {
   }, [category, keyword])
 
   return (
-    <View style={styles.constainer}>
-      <Header title={category.title || 'Todos los productos'} handleBack={handleBack} />
-      <FlatList
-        numColumns={2}
-        data={products}
-        renderItem={({ item }) => <ProductCard item={item} />}
-        keyExtractor={item => item.id} />
-      <SearchBar handleSearch={handleSearch} />
+    <View style={styles.background}>
+      <View style={styles.container}>
+        <FlatList
+          numColumns={2}
+          data={products}
+          renderItem={({ item }) => <ProductCard item={item} />}
+          keyExtractor={item => item.id} />
+        <SearchBar handleSearch={handleSearch} />
+      </View>
     </View>
   )
 }
@@ -36,12 +39,15 @@ const ItemListCategories = ({ category, handleBack }) => {
 export default ItemListCategories
 
 const styles = StyleSheet.create({
-  constainer: {
+  background: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: PALETTE.white,
+    alignItems: 'center'
+  },
+  container: {
     flex: 1,
     width: '90%',
+    backgroundColor: PALETTE.white,
   },
-  cardsContainer: {
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
 })

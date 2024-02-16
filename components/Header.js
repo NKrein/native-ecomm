@@ -5,17 +5,19 @@ import checkoutIcon from '../assets/icons/icon-checkout-flame.png'
 
 const Header = ({ title, handleBack }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>{title}</Text>
-      <View style={styles.buttonBox}>
-        <Pressable style={styles.button}>
-          <Image style={styles.icon} source={checkoutIcon} />
-        </Pressable>
-        {handleBack &&
-          <Pressable style={styles.button} onPress={handleBack}>
-            <Image style={styles.icon} source={arrowIcon} />
+    <View style={styles.background}>
+      <View style={styles.container}>
+        <Text style={styles.text}>{title}</Text>
+        <View style={styles.buttonBox}>
+          <Pressable style={styles.button}>
+            <Image style={styles.icon} source={checkoutIcon} />
           </Pressable>
-        }
+          {handleBack &&
+            <Pressable style={styles.button} onPress={handleBack}>
+              <Image style={styles.icon} source={arrowIcon} />
+            </Pressable>
+          }
+        </View>
       </View>
     </View>
   )
@@ -24,12 +26,17 @@ const Header = ({ title, handleBack }) => {
 export default Header
 
 const styles = StyleSheet.create({
-  container: {
+  background: {
     width: '100%',
+    backgroundColor: PALETTE.white,
+  },
+  container: {
+    width: '90%',
     backgroundColor: PALETTE.timberwolf,
     borderRadius: 10,
     padding: 10,
-    marginVertical: 12
+    marginVertical: 12,
+    marginHorizontal: '5%'
   },
   text: {
     fontSize: 32,
