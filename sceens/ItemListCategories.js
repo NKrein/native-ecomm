@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar'
 import ProductCard from '../components/ProductCard'
 import { PALETTE } from '../utils/colorPalette'
 
-const ItemListCategories = ({ route }) => {
+const ItemListCategories = ({ route, navigation }) => {
 
   const [products, setProducts] = useState([])
   const [keyword, setKeyword] = useState('')
@@ -28,7 +28,7 @@ const ItemListCategories = ({ route }) => {
         <FlatList
           numColumns={2}
           data={products}
-          renderItem={({ item }) => <ProductCard item={item} />}
+          renderItem={({ item }) => <ProductCard item={item} navigation={navigation} />}
           keyExtractor={item => item.id} />
         <SearchBar handleSearch={handleSearch} />
       </View>

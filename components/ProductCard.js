@@ -1,10 +1,12 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { PALETTE } from '../utils/colorPalette'
 import Counter from './Counter'
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item, navigation }) => {
   return (
-    <View style={styles.container}>
+    <Pressable
+      onPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+      style={styles.container}>
       <View style={styles.card}>
         <Image
           style={styles.image}
@@ -14,7 +16,7 @@ const ProductCard = ({ item }) => {
         <Text style={styles.text}>${item.price}</Text>
         <Counter item={item} short />
       </View>
-    </View>
+    </Pressable>
   )
 }
 
