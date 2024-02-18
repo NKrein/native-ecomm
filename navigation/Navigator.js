@@ -14,7 +14,7 @@ const Navigator = () => {
       ? 'Inicio'
       : route.name === 'ItemListCategories'
         ? route.params.category.title
-        : 'ItemDetail'
+        : route.params.item.name
     const handleBack = route.name !== 'Home'
       ? navigation.goBack
       : null

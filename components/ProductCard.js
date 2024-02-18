@@ -5,7 +5,7 @@ import Counter from './Counter'
 const ProductCard = ({ item, navigation }) => {
   return (
     <Pressable
-      onPress={() => navigation.navigate('ItemDetail', { id: item.id })}
+      onPress={() => navigation.navigate('ItemDetail', { item })}
       style={styles.container}>
       <View style={styles.card}>
         <Image

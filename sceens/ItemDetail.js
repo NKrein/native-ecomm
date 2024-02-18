@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react'
 import productsList from '../assets/data/products.json'
 import { PALETTE } from '../utils/colorPalette'
 import Counter from '../components/Counter'
+import LevelIndicator from '../components/LevelIndicator'
 
 const ItemDetail = ({ route }) => {
   const [product, setProduct] = useState({})
-  const { id } = route.params
+  const { id } = route.params.item
 
   useEffect(() => {
     const selectedItem = productsList.find(item => item.id === id)
@@ -22,6 +23,22 @@ const ItemDetail = ({ route }) => {
       <ScrollView style={styles.detail}>
         <Text style={styles.heading}>{product.name}</Text>
         <Text style={styles.description}>{product.description}</Text>
+        <View style={styles.propertiesContainer}>
+          <Text style={styles.propertiesHeading}>Roast level</Text>
+          <LevelIndicator level={product.roast_level} max={5} />
+        </View>
+        <View style={styles.propertiesContainer}>
+          <Text style={styles.propertiesHeading}>Grind Option</Text>
+          <Text style={styles.propertiesValue}>{product.grind_option?.join(', ')}.</Text>
+        </View>
+        <View style={styles.propertiesContainer}>
+          <Text style={styles.propertiesHeading}>Flavor Profile</Text>
+          <Text style={styles.propertiesValue}>{product.flavor_profile?.join(', ')}.</Text>
+        </View>
+        <View style={styles.propertiesContainer}>
+          <Text style={styles.propertiesHeading}>Region</Text>
+          <Text style={styles.propertiesValue}>{product.region}.</Text>
+        </View>
       </ScrollView>
       <View style={styles.counterContainer}>
         <View style={styles.bottomBar}>
@@ -66,7 +83,24 @@ const styles = StyleSheet.create({
     fontFamily: 'playRegular',
     color: PALETTE.eerieBlack,
     fontSize: 16,
+    marginVertical: 16,
+  },
+  propertiesContainer: {
+    marginBottom: 8,
+    padding: 8,
+    borderColor: PALETTE.timberwolf,
+    borderRadius: 10,
+    borderWidth: 2,
+    width: '90%',
+    marginHorizontal: '5%'
+  },
+  propertiesHeading: {
+    fontFamily: 'playBold',
+  },
+  propertiesValue: {
     marginVertical: 8,
+    marginHorizontal: 16,
+    fontFamily: 'playRegular',
   },
   bottomBar: {
     flexDirection: 'row',
