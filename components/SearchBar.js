@@ -22,11 +22,14 @@ const SearchBar = ({ handleSearch }) => {
           onChangeText={setInputValue}
           value={inputValue} />
         <Pressable style={styles.backLineButton} onPress={handleBackLine}>
-          {inputValue && <Image style={styles.icon} source={deleteIcon} />}
+          {inputValue 
+            ? <Image style={styles.icon} source={deleteIcon} resizeMode='contain'/>
+            : null
+          }
         </Pressable>
       </View>
       <Pressable style={styles.button} onPress={handlePress}>
-        <Image style={styles.icon} source={searchIcon} />
+        <Image style={styles.icon} source={searchIcon} resizeMode='contain'/>
       </Pressable>
     </View>
   )
@@ -81,7 +84,6 @@ const styles = StyleSheet.create({
   icon: {
     width: 25,
     height: 25,
-    resizeMode: 'contain'
   }
 });
 

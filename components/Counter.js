@@ -50,7 +50,7 @@ const Counter = ({ item, short = false }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.button} onPress={handleAdd}>
-        <Image style={styles.icon} source={addIcon} />
+        <Image style={styles.icon} source={addIcon} resizeMode='contain'/>
       </Pressable>
     </View>
   )
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
-    resizeMode: 'contain'
   },
   text: {
     margin: 8,

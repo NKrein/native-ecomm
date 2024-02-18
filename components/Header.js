@@ -14,7 +14,7 @@ const Header = ({ title, handleBack }) => {
           </Pressable>
           {handleBack &&
             <Pressable style={styles.button} onPress={handleBack}>
-              <Image style={styles.icon} source={arrowIcon} />
+              <Image style={styles.icon} source={arrowIcon} resizeMode='contain'/>
             </Pressable>
           }
         </View>
@@ -61,6 +61,5 @@ const styles = StyleSheet.create({
   icon: {
     width: 25,
     height: 25,
-    resizeMode: 'contain'
   }
 })
