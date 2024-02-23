@@ -11,10 +11,14 @@ import shopIconSolid from '../assets/icons/icon-shop-solid.png'
 import shopIconDisabled from '../assets/icons/icon-shop-disabled.png'
 import orderIconSolid from '../assets/icons/icon-order-solid.png'
 import orderIconDisabled from '../assets/icons/icon-order-disabled.png'
+import { useSelector } from 'react-redux'
 
 const Tab = createBottomTabNavigator()
 
 const Navigator = () => {
+
+  const cart = useSelector(({ cartReducer }) => cartReducer.value.cart)
+  const totalQty = cart.reduce((accum, current) => accum += current.qty, 0)
 
   const screenOptions = {
     headerShown: false,
@@ -48,7 +52,12 @@ const Navigator = () => {
                   style={styles.icon}
                   source={focused ? checkoutIconSolid : checkoutIconDisabled} />
               </View>
-            )
+            ),
+            tabBarBadge: totalQty || null,
+            tabBarBadgeStyle: {
+              backgroundColor: PALETTE.flame,
+              color: PALETTE.white,
+            }
           }}
         />
         <Tab.Screen
