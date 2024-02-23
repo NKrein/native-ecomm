@@ -2,31 +2,35 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import addIcon from '../assets/icons/icon-add-flame.png'
 import subtractIcon from '../assets/icons/icon-subtract-flame.png'
 import deleteIcon from '../assets/icons/icon-delete-flame.png'
-import { useState } from 'react'
 import { PALETTE } from '../utils/colorPalette'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart, deleteFromCart } from '../features/cartSlice'
 
 const Counter = ({ item, short = false }) => {
-  const [qty, setQty] = useState(0)
-  const isInCart = qty > 0
+  const cart = useSelector(({ cartReducer }) => cartReducer.value.cart)
+  const dispatch = useDispatch()
+  const productInCart = cart.find(element => element.id === item.id)
 
   const handleAdd = () => {
-    if (qty < item.stock) {
-      setQty(prev => prev + 1)
+    if (productInCart?.qty < item.stock || !productInCart) {
+      dispatch(addToCart({ ...item, qty: 1 }))
     }
   }
 
   const handleSubtract = () => {
-    if (qty >= 1) {
-      setQty(prev => prev - 1)
+    if (productInCart.qty > 1) {
+      dispatch(addToCart({ ...item, qty: -1 }))
+    } else {
+      dispatch(deleteFromCart(productInCart))
     }
   }
 
   const handleDelete = () => {
-    setQty(0)
+    dispatch(deleteFromCart(productInCart))
   }
 
 
-  if (isInCart) {
+  if (productInCart) {
     return (
       <View style={styles.container}>
         {!short &&
@@ -38,7 +42,7 @@ const Counter = ({ item, short = false }) => {
           <Image style={styles.icon} source={subtractIcon} />
         </Pressable>
         <Text style={styles.text}>
-          {qty}
+          {productInCart.qty}
         </Text>
         <Pressable style={styles.button} onPress={handleAdd}>
           <Image style={styles.icon} source={addIcon} />
@@ -50,7 +54,7 @@ const Counter = ({ item, short = false }) => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.button} onPress={handleAdd}>
-        <Image style={styles.icon} source={addIcon} resizeMode='contain'/>
+        <Image style={styles.icon} source={addIcon} resizeMode='contain' />
       </Pressable>
     </View>
   )
