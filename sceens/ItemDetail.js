@@ -1,18 +1,11 @@
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { useEffect, useState } from 'react'
-import productsList from '../assets/data/products.json'
 import { PALETTE } from '../utils/colorPalette'
 import Counter from '../components/Counter'
 import LevelIndicator from '../components/LevelIndicator'
+import { useSelector } from 'react-redux'
 
-const ItemDetail = ({ route }) => {
-  const [product, setProduct] = useState({})
-  const { id } = route.params.item
-
-  useEffect(() => {
-    const selectedItem = productsList.find(item => item.id === id)
-    setProduct(selectedItem)
-  }, [id])
+const ItemDetail = () => {
+  const product = useSelector(({ shopReducer }) => shopReducer.value.productSelected)
 
   return (
     <View style={styles.container}>

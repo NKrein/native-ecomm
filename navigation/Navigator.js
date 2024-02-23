@@ -31,9 +31,9 @@ const Navigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View>
-                <Image 
-                  style={styles.icon} 
-                  source={focused? shopIconSolid : shopIconDisabled} />
+                <Image
+                  style={styles.icon}
+                  source={focused ? shopIconSolid : shopIconDisabled} />
               </View>
             )
           }}
@@ -44,9 +44,9 @@ const Navigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View>
-                <Image 
-                  style={styles.icon} 
-                  source={focused? checkoutIconSolid : checkoutIconDisabled} />
+                <Image
+                  style={styles.icon}
+                  source={focused ? checkoutIconSolid : checkoutIconDisabled} />
               </View>
             )
           }}
@@ -57,9 +57,9 @@ const Navigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <View>
-                <Image 
-                  style={styles.icon} 
-                  source={focused? orderIconSolid : orderIconDisabled} />
+                <Image
+                  style={styles.icon}
+                  source={focused ? orderIconSolid : orderIconDisabled} />
               </View>
             )
           }}

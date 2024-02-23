@@ -1,10 +1,18 @@
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import { PALETTE } from '../utils/colorPalette'
+import { useDispatch } from 'react-redux'
+import { setCategorySelected } from '../features/shopSlice'
 
 const CategoryCard = ({ item, navigation }) => {
+
+  const dispatch = useDispatch()
+
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate('ItemListCategories', { category: item })}>
+      <Pressable onPress={() => {
+        dispatch(setCategorySelected(item))
+        navigation.navigate('ItemListCategories', { category: item })
+      }}>
         <Text style={styles.text}>{item.title}</Text>
       </Pressable>
     </View>

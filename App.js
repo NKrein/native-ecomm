@@ -4,6 +4,8 @@ import { PALETTE } from './utils/colorPalette';
 import { useFonts } from 'expo-font';
 import { fonts } from './utils/fonts';
 import Navigator from './navigation/Navigator';
+import { Provider } from 'react-redux';
+import store from './store';
 
 export default function App() {
 
@@ -19,7 +21,9 @@ export default function App() {
       style={styles.container}>
       <StatusBar />
       <SafeAreaView style={styles.container}>
-        <Navigator />
+        <Provider store={store}>
+          <Navigator />
+        </Provider>
       </SafeAreaView>
     </KeyboardAvoidingView>
   );

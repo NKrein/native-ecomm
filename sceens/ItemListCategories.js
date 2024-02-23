@@ -1,26 +1,22 @@
 import { useEffect, useState } from 'react'
 import { FlatList, StyleSheet, View } from 'react-native'
-import productsList from '../assets/data/products.json'
 import SearchBar from '../components/SearchBar'
 import ProductCard from '../components/ProductCard'
 import { PALETTE } from '../utils/colorPalette'
+import { useSelector } from 'react-redux'
 
-const ItemListCategories = ({ route, navigation }) => {
+const ItemListCategories = ({ navigation }) => {
 
+  const productsFiltered = useSelector(({ shopReducer }) => shopReducer.value.productsFiltered)
   const [products, setProducts] = useState([])
   const [keyword, setKeyword] = useState('')
-
-  const { category } = route.params
 
   const handleSearch = (value) => setKeyword(value)
 
   useEffect(() => {
-    const selectedCategoryItems = category.title
-      ? productsList.filter(item => item.region === category.title)
-      : productsList
-    const updatedArray = selectedCategoryItems.filter(item => item.name.includes(keyword))
+    const updatedArray = productsFiltered.filter(item => item.name.includes(keyword))
     setProducts(updatedArray)
-  }, [category, keyword])
+  }, [productsFiltered, keyword])
 
   return (
     <View style={styles.background}>
