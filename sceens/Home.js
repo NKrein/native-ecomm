@@ -5,7 +5,7 @@ import { PALETTE } from '../utils/colorPalette'
 
 const Home = ({ navigation }) => {
   return (
-    <View style={styles.constainer}>
+    <View style={styles.container}>
       <FlatList
         data={categoriesList}
         renderItem={({item}) => <CategoryCard item={item} navigation={navigation}/>}
@@ -17,7 +17,7 @@ const Home = ({ navigation }) => {
 export default Home
 
 const styles = StyleSheet.create({
-  constainer: {
+  container: {
     flex: 1,
     width: '100%',
     backgroundColor: PALETTE.white,

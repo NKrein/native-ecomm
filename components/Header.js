@@ -1,7 +1,6 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { PALETTE } from '../utils/colorPalette'
 import arrowIcon from '../assets/icons/icon-arrow-left-flame.png'
-import checkoutIcon from '../assets/icons/icon-checkout-flame.png'
 
 const Header = ({ title, handleBack }) => {
   return (
@@ -9,9 +8,6 @@ const Header = ({ title, handleBack }) => {
       <View style={styles.container}>
         <Text style={styles.text}>{title}</Text>
         <View style={styles.buttonBox}>
-          <Pressable style={styles.button}>
-            <Image style={styles.icon} source={checkoutIcon} />
-          </Pressable>
           {handleBack &&
             <Pressable style={styles.button} onPress={handleBack}>
               <Image style={styles.icon} source={arrowIcon} resizeMode='contain'/>
@@ -32,11 +28,12 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '90%',
+    height: 108,
     backgroundColor: PALETTE.timberwolf,
     borderRadius: 10,
     padding: 10,
     marginVertical: 12,
-    marginHorizontal: '5%'
+    marginHorizontal: '5%',
   },
   text: {
     fontSize: 32,
@@ -45,7 +42,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   buttonBox: {
-    flexDirection: 'row-reverse',
+    flexDirection: 'row',
     justifyContent: 'space-between',
   },
   button: {

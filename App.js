@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Platform, SafeAreaView, StyleSheet } from 'react-native';
+import { KeyboardAvoidingView, Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import Constants from "expo-constants"
 import { PALETTE } from './utils/colorPalette';
 import { useFonts } from 'expo-font';
@@ -17,6 +17,7 @@ export default function App() {
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}>
+      <StatusBar />
       <SafeAreaView style={styles.container}>
         <Navigator />
       </SafeAreaView>
@@ -29,5 +30,5 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: Platform.OS === 'android' ? Constants.statusBarHeight : 0,
     backgroundColor: PALETTE.white
-},
+  },
 });
