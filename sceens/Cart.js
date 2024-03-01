@@ -1,35 +1,66 @@
 import { FlatList, Pressable, StyleSheet, Text, View } from 'react-native'
 import { PALETTE } from '../utils/colorPalette'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import CartProductCard from '../components/CartProductCard'
+import { usePostOrderMutation } from '../services/shopAPI'
+import Loading from '../components/Loading'
+import { resetCart } from '../features/cartSlice'
+import { useEffect } from 'react'
 
 const Cart = () => {
 
-  const cart = useSelector(({ cartReducer }) => cartReducer.value.cart)
-  const total = cart.reduce((accum, current) => accum += (current.price * current.qty), 0)
+  const { cart, total, user } = useSelector(({ cartReducer }) => cartReducer.value)
+  const [triggerPost, result] = usePostOrderMutation()
+  const { isSuccess, isError, isLoading, data, reset } = result
+  const dispatch = useDispatch()
+
+  const handleConfirm = () => {
+    // if (user.id) {
+    triggerPost({ items: cart, total, user })
+    // }
+  }
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(resetCart())
+    }
+  }, [result])
+
+  if (isSuccess) {
+    return (
+      <View style={styles.successContainer}>
+        <Text style={styles.successHeading}>Orden generada con éxito</Text>
+        <Text style={styles.successText}>id: {data?.name}</Text>
+        <Pressable style={styles.button} onPress={() => reset()}>
+          <Text style={styles.buttonText}>Aceptar</Text>
+        </Pressable>
+      </View>
+    )
+  }
 
   return (
     <View style={styles.container}>
       {cart.length === 0
         ? <View style={styles.emptyCart}>
-            <Text style={styles.emptyCartText}>El carrito está vacío</Text>
-          </View>
+          <Text style={styles.emptyCartText}>El carrito está vacío</Text>
+        </View>
         : <>
-            <FlatList
-              data={cart}
-              renderItem={({ item }) => <CartProductCard item={item} />}
-              keyExtractor={item => item.id} />
-            <View style={styles.footer}>
-              <View style={styles.cartDetail}>
-                <Text style={styles.label}>TOTAL</Text>
-                <Text style={styles.total}>${total}</Text>
-              </View>
-              <Pressable style={styles.button}>
-                <Text style={styles.buttonText}>Confirmar</Text>
-              </Pressable>
+          <FlatList
+            data={cart}
+            renderItem={({ item }) => <CartProductCard item={item} />}
+            keyExtractor={item => item.id} />
+          <View style={styles.footer}>
+            <View style={styles.cartDetail}>
+              <Text style={styles.label}>TOTAL</Text>
+              <Text style={styles.total}>${total}</Text>
             </View>
-          </>
+            <Pressable style={styles.button} onPress={handleConfirm}>
+              <Text style={styles.buttonText}>Confirmar</Text>
+            </Pressable>
+          </View>
+        </>
       }
+      <Loading message='Cargando la orden' isLoading={isLoading} />
     </View>
   )
 }
@@ -95,6 +126,23 @@ const styles = StyleSheet.create({
   emptyCartText: {
     fontFamily: 'playRegular',
     fontSize: 32,
+    margin: 16,
+  },
+  successContainer: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: PALETTE.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  successHeading: {
+    fontFamily: 'playRegular',
+    fontSize: 26,
+    margin: 16,
+  },
+  successText: {
+    fontFamily: 'playRegular',
+    fontSize: 16,
     margin: 16,
   },
 })

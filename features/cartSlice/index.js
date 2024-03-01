@@ -4,7 +4,10 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     value: {
-      cart: []
+      cart: [],
+      total: 0,
+      user: {},
+      updateAt: Date.now().toLocaleString()
     }
   },
   reducers: {
@@ -16,14 +19,19 @@ export const cartSlice = createSlice({
       } else {
         state.value.cart = [...state.value.cart, productToAdd]
       }
+      const updatedTotal = state.value.cart.reduce((accum, current) => accum += (current.price * current.qty), 0)
+      state.value.total = updatedTotal
     },
     deleteFromCart: (state, action) => {
       const productToDelete = action.payload
       const updatedArray = state.value.cart.filter(item => item.id !== productToDelete.id)
       state.value.cart = updatedArray
+      const updatedTotal = state.value.cart.reduce((accum, current) => accum += (current.price * current.qty), 0)
+      state.value.total = updatedTotal
     },
     resetCart: (state) => {
       state.value.cart = []
+      state.value.total = 0
     }
   }
 })
