@@ -4,19 +4,24 @@ import SearchBar from '../components/SearchBar'
 import ProductCard from '../components/ProductCard'
 import { PALETTE } from '../utils/colorPalette'
 import { useSelector } from 'react-redux'
+import { useGetProductsByCategoryQuery } from '../services/shopAPI'
 
 const ItemListCategories = ({ navigation }) => {
 
-  const productsFiltered = useSelector(({ shopReducer }) => shopReducer.value.productsFiltered)
+  const category = useSelector(({ shopReducer }) => shopReducer.value.categorySelected)
+  const { data, isLoading, error} = useGetProductsByCategoryQuery(category.title)
   const [products, setProducts] = useState([])
   const [keyword, setKeyword] = useState('')
 
   const handleSearch = (value) => setKeyword(value)
 
   useEffect(() => {
-    const updatedArray = productsFiltered.filter(item => item.name.includes(keyword))
-    setProducts(updatedArray)
-  }, [productsFiltered, keyword])
+    if (data) {
+      const productsArray = Object.values(data)
+      const updatedArray = productsArray.filter(item => item.name.includes(keyword))
+      setProducts(updatedArray)  
+    }
+  }, [data, keyword])
 
   return (
     <View style={styles.background}>

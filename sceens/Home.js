@@ -1,16 +1,16 @@
 import { FlatList, StyleSheet, View } from 'react-native'
 import CategoryCard from '../components/CategoryCard'
 import { PALETTE } from '../utils/colorPalette'
-import { useSelector } from 'react-redux'
+import { useGetCategoriesQuery } from '../services/shopAPI'
 
 const Home = ({ navigation }) => {
 
-  const categoriesList = useSelector(({ shopReducer }) => shopReducer.value.categories)
+  const { data, isLoading, error } = useGetCategoriesQuery()
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={categoriesList}
+        data={data}
         renderItem={({ item }) => <CategoryCard item={item} navigation={navigation} />}
         keyExtractor={item => item.id} />
     </View>
