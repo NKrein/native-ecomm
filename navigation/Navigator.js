@@ -1,4 +1,3 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ShopStack from './ShopStack'
 import CartStack from './CartStack'
@@ -16,7 +15,6 @@ import { useSelector } from 'react-redux'
 const Tab = createBottomTabNavigator()
 
 const Navigator = () => {
-
   const cart = useSelector(({ cartReducer }) => cartReducer.value.cart)
   const totalQty = cart.reduce((accum, current) => accum += current.qty, 0)
 
@@ -27,54 +25,52 @@ const Navigator = () => {
   }
 
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen
-          name='ShopStack'
-          component={ShopStack}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <Image
-                  style={styles.icon}
-                  source={focused ? shopIconSolid : shopIconDisabled} />
-              </View>
-            )
-          }}
-        />
-        <Tab.Screen
-          name='CartStack'
-          component={CartStack}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <Image
-                  style={styles.icon}
-                  source={focused ? checkoutIconSolid : checkoutIconDisabled} />
-              </View>
-            ),
-            tabBarBadge: totalQty || null,
-            tabBarBadgeStyle: {
-              backgroundColor: PALETTE.flame,
-              color: PALETTE.white,
-            }
-          }}
-        />
-        <Tab.Screen
-          name='OrderStack'
-          component={OrderStack}
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <View>
-                <Image
-                  style={styles.icon}
-                  source={focused ? orderIconSolid : orderIconDisabled} />
-              </View>
-            )
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Screen
+        name='ShopStack'
+        component={ShopStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                style={styles.icon}
+                source={focused ? shopIconSolid : shopIconDisabled} />
+            </View>
+          )
+        }}
+      />
+      <Tab.Screen
+        name='CartStack'
+        component={CartStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                style={styles.icon}
+                source={focused ? checkoutIconSolid : checkoutIconDisabled} />
+            </View>
+          ),
+          tabBarBadge: totalQty || null,
+          tabBarBadgeStyle: {
+            backgroundColor: PALETTE.flame,
+            color: PALETTE.white,
+          }
+        }}
+      />
+      <Tab.Screen
+        name='OrderStack'
+        component={OrderStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                style={styles.icon}
+                source={focused ? orderIconSolid : orderIconDisabled} />
+            </View>
+          )
+        }}
+      />
+    </Tab.Navigator>
   )
 }
 

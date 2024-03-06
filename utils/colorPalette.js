@@ -14,4 +14,14 @@ export const PALETTE = {
   flame50: '#eb5e2880',
   white50: '#fffcf280',
 
+  warning: '#ffc007',
+  warningBg: '#faf2df',
+  warningBorder: '#ffe69c',
+  success: '#198753',
+  successBg: '#d1e6dd',
+  successBorder: '#a3cfbb',
+  error: '#dc3444',
+  errorBg: '#f8d7d9',
+  errorBorder: '#f1aeb5',
+
 }

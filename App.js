@@ -3,9 +3,9 @@ import Constants from "expo-constants"
 import { PALETTE } from './utils/colorPalette';
 import { useFonts } from 'expo-font';
 import { fonts } from './utils/fonts';
-import Navigator from './navigation/Navigator';
 import { Provider } from 'react-redux';
 import store from './store';
+import MainNavigator from './navigation/MainNavigator';
 
 export default function App() {
 
@@ -22,7 +22,7 @@ export default function App() {
       <StatusBar />
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
-          <Navigator />
+          <MainNavigator />
         </Provider>
       </SafeAreaView>
     </KeyboardAvoidingView>
