@@ -1,18 +1,60 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
 import InputForm from '../components/InputForm'
 import { PALETTE } from '../utils/colorPalette'
+import { useLogInMutation, useSignUpMutation } from '../services/authAPI'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../features/authSlice'
+import Loading from '../components/Loading'
 
 const Authentication = () => {
 
   const [register, setRegister] = useState(false)
   const [inputValidation, setInputValidation] = useState({})
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordVerification, setPasswordVerification] = useState('')
+  const [triggerLogin, loginResult] = useLogInMutation()
+  const [triggerSignUp, signUpResult] = useSignUpMutation()
+
+  const dispatch = useDispatch()
 
   const handleSubmit = () => {
     if (register) {
-      console.log('register')
+      triggerSignUp({ email, password })
     } else {
-      console.log('login')
+      triggerLogin({ email, password })
+    }
+  }
+
+  useEffect(() => {
+    if (loginResult.isSuccess) {
+      const { data } = loginResult
+      dispatch(setUser(data))
+    }
+    if (signUpResult.isSuccess) {
+      const { data } = signUpResult
+      dispatch(setUser(data))
+    }
+  }, [loginResult, signUpResult])
+
+  if (loginResult.isError || signUpResult.isError) {
+    const error = loginResult.error || signUpResult.error
+    const message = error.data.error.message
+    if (message.includes('EMAIL_EXISTS')) {
+      console.log('Email ya existe')
+    }
+    if (message.includes('INVALID_EMAIL')) {
+      console.log('Email inválido')
+    }
+    if (message.includes('TOO_MANY_ATTEMPTS_TRY_LATER')) {
+      console.log('Hemos bloqueado todas las solicitudes de este dispositivo debido a una actividad inusual. Vuelve a intentarlo más tarde.')
+    }
+    if (message.includes('EMAIL_NOT_FOUND')) {
+      console.log('Usuario no encontrado')
+    }
+    if (message.includes('INVALID_LOGIN_CREDENTIALS')) {
+      console.log('Credenciales inválidas, intente nuevamente')
     }
   }
 
@@ -24,17 +66,17 @@ const Authentication = () => {
         </Text>
         <InputForm
           label='Email'
-          handleChange={(value) => console.log(value)}
+          handleChange={setEmail}
           error={inputValidation.email || ''} />
         <InputForm
           label='Contraseña'
-          handleChange={(value) => console.log(value)}
+          handleChange={setPassword}
           error={inputValidation.password || ''}
           isSecure />
         {register &&
           <InputForm
             label='Confirmar contraseña'
-            handleChange={(value) => console.log(value)}
+            handleChange={setPasswordVerification}
             error={inputValidation.passwordVerification || ''}
             isSecure />
         }
@@ -56,6 +98,7 @@ const Authentication = () => {
           </Pressable>
         </View>
       </View>
+      <Loading message='Cargando' isLoading={loginResult.isLoading || signUpResult.isLoading} />
     </View>
   )
 }
