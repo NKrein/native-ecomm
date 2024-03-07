@@ -6,6 +6,8 @@ import { useLogInMutation, useSignUpMutation } from '../services/authAPI'
 import { useDispatch } from 'react-redux'
 import { setUser } from '../features/authSlice'
 import Loading from '../components/Loading'
+import { loginSchema, signUpSchema } from '../validations'
+import { Toast } from 'toastify-react-native'
 
 const Authentication = () => {
 
@@ -20,10 +22,18 @@ const Authentication = () => {
   const dispatch = useDispatch()
 
   const handleSubmit = () => {
-    if (register) {
-      triggerSignUp({ email, password })
-    } else {
-      triggerLogin({ email, password })
+    setInputValidation({})
+    try {
+      if (register) {
+        signUpSchema.validateSync({ email, password, passwordVerification })
+        triggerSignUp({ email, password })
+      } else {
+        loginSchema.validateSync({ email, password })
+        triggerLogin({ email, password })
+      }
+    } catch (error) {
+      const { path, message } = error
+      setInputValidation({ [path]: message })
     }
   }
 
@@ -36,27 +46,26 @@ const Authentication = () => {
       const { data } = signUpResult
       dispatch(setUser(data))
     }
+    if (loginResult.isError || signUpResult.isError) {
+      const error = loginResult.error || signUpResult.error
+      const message = error.data.error.message
+      if (signUpResult.isError && message.includes('EMAIL_EXISTS')) {
+        Toast.error('El email ya está registrado.')
+      }
+      if (message.includes('INVALID_EMAIL')) {
+        setInputValidation({ email: 'No es un email válido.' })
+      }
+      if (message.includes('TOO_MANY_ATTEMPTS_TRY_LATER')) {
+        Toast.error('Demasiados intentos, hemos bloqueado momentáneamente el dispositivo. Vuelva a intentarlo más tarde.')
+      }
+      if (message.includes('EMAIL_NOT_FOUND')) {
+        Toast.error('Usuario no encontrado.')
+      }
+      if (message.includes('INVALID_LOGIN_CREDENTIALS')) {
+        Toast.error('Credenciales inválidas.\nIntente nuevamente.')
+      }
+    }  
   }, [loginResult, signUpResult])
-
-  if (loginResult.isError || signUpResult.isError) {
-    const error = loginResult.error || signUpResult.error
-    const message = error.data.error.message
-    if (message.includes('EMAIL_EXISTS')) {
-      console.log('Email ya existe')
-    }
-    if (message.includes('INVALID_EMAIL')) {
-      console.log('Email inválido')
-    }
-    if (message.includes('TOO_MANY_ATTEMPTS_TRY_LATER')) {
-      console.log('Hemos bloqueado todas las solicitudes de este dispositivo debido a una actividad inusual. Vuelve a intentarlo más tarde.')
-    }
-    if (message.includes('EMAIL_NOT_FOUND')) {
-      console.log('Usuario no encontrado')
-    }
-    if (message.includes('INVALID_LOGIN_CREDENTIALS')) {
-      console.log('Credenciales inválidas, intente nuevamente')
-    }
-  }
 
   return (
     <View style={styles.background}>
@@ -91,7 +100,10 @@ const Authentication = () => {
           </Text>
           <Pressable
             style={styles.optionButton}
-            onPress={() => setRegister(!register)}>
+            onPress={() => {
+              setRegister(!register)
+              setInputValidation({})
+            }}>
             <Text style={styles.optionButtonText}>
               {register ? 'Ir a iniciar sesión' : 'Registrarme ahora'}
             </Text>

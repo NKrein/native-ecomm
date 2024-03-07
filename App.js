@@ -6,6 +6,7 @@ import { fonts } from './utils/fonts';
 import { Provider } from 'react-redux';
 import store from './store';
 import MainNavigator from './navigation/MainNavigator';
+import ToastManager from 'toastify-react-native';
 
 export default function App() {
 
@@ -23,6 +24,12 @@ export default function App() {
       <SafeAreaView style={styles.container}>
         <Provider store={store}>
           <MainNavigator />
+          <ToastManager
+            style={styles.toast}
+            textStyle={styles.toastText}
+            position='top'
+            height='auto'
+            width='100%' />
         </Provider>
       </SafeAreaView>
     </KeyboardAvoidingView>
@@ -35,4 +42,12 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'android' ? Constants.statusBarHeight : 0,
     backgroundColor: PALETTE.white
   },
+  toast: {
+    backgroundColor: PALETTE.white,
+    paddingHorizontal: 16,
+  },
+  toastText: {
+    color: PALETTE.eerieBlack,
+    paddingHorizontal: 12,
+  }
 });
