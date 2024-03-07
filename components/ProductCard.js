@@ -20,7 +20,7 @@ const ProductCard = ({ item, navigation }) => {
           style={styles.image}
           resizeMode='contain'
           source={{ uri: item.image }} />
-        <Text style={styles.text}>{item.name}</Text>
+        <Text numberOfLines={1} style={styles.text}>{item.name}</Text>
         <Text style={styles.text}>${item.price}</Text>
         <Counter item={item} short />
       </View>

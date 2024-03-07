@@ -3,27 +3,21 @@ import React from 'react'
 import Counter from './Counter'
 import { PALETTE } from '../utils/colorPalette'
 
-const CartProductCard = ({ item }) => {
+const OrderCard = ({ item }) => {
+
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        resizeMode='contain'
-        source={{ uri: item.image }} />
       <View style={styles.details}>
         <View style={styles.detailSection}>
-          <Text numberOfLines={1} style={styles.name}>{item.name}</Text>
-          <Text style={styles.price}>$ {item.price * item.qty}</Text>
-        </View>
-        <View style={styles.counterSection}>
-          <Counter item={item} />
+          <Text numberOfLines={1} style={styles.name}>{item.id}</Text>
+          <Text style={styles.price}>$ {item.total}</Text>
         </View>
       </View>
     </View>
   )
 }
 
-export default CartProductCard
+export default OrderCard
 
 const styles = StyleSheet.create({
   container: {
@@ -35,16 +29,10 @@ const styles = StyleSheet.create({
     backgroundColor: PALETTE.timberwolf,
     borderRadius: 10,
   },
-  image: {
-    width: '30%',
-    height: 112,
-    backgroundColor: PALETTE.eerieBlack,
-    borderRadius: 10,
-  },
   details: {
     flexGrow: 2,
     justifyContent: 'center',
-    marginLeft: 10,
+    marginHorizontal: 10,
   },
   detailSection: {
     width: '100%',
@@ -54,14 +42,6 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'flex-end',
-  },
-  counterSection: {
-    alignItems: 'flex-end',
-    height: 56,
-    justifyContent: 'center',
-    marginBottom: -10,
-    marginTop: 10,
-    marginRight: -10
   },
   name: {
     fontFamily: 'playRegular',

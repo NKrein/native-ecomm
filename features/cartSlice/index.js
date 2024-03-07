@@ -6,7 +6,6 @@ export const cartSlice = createSlice({
     value: {
       cart: [],
       total: 0,
-      user: {},
       updateAt: Date.now().toLocaleString()
     }
   },

@@ -21,7 +21,15 @@ export const shopAPI = createApi({
         body: order,
       })
     }),
+    getOrdersByUserId: builder.query({
+      query: (uid) => `orders.json?orderBy="userId"&equalTo="${uid}"`
+    }),
   })
 })
 
-export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery, usePostOrderMutation } = shopAPI
+export const { 
+  useGetProductsQuery, 
+  useGetCategoriesQuery, 
+  useGetProductsByCategoryQuery, 
+  usePostOrderMutation,
+  useGetOrdersByUserIdQuery } = shopAPI

@@ -6,23 +6,35 @@ import { usePostOrderMutation } from '../services/shopAPI'
 import Loading from '../components/Loading'
 import { resetCart } from '../features/cartSlice'
 import { useEffect } from 'react'
+import { Toast } from 'toastify-react-native'
 
 const Cart = () => {
 
-  const { cart, total, user } = useSelector(({ cartReducer }) => cartReducer.value)
+  const { cart, total } = useSelector(({ cartReducer }) => cartReducer.value)
+  const { user } = useSelector(({ authReducer }) => authReducer.value)
   const [triggerPost, result] = usePostOrderMutation()
   const { isSuccess, isError, isLoading, data, reset } = result
   const dispatch = useDispatch()
 
   const handleConfirm = () => {
-    // if (user.id) {
-    triggerPost({ items: cart, total, user })
-    // }
+    if (user) {
+      const order = {
+        items: cart,
+        total,
+        user,
+        userId: user.localId,
+        timestamp: Date.now().toLocaleString()
+      }
+      triggerPost(order)
+    }
   }
 
   useEffect(() => {
     if (isSuccess) {
       dispatch(resetCart())
+    }
+    if (isError) {
+      Toast.error('Error al guardar la orden.\nIntente nuevamente.')
     }
   }, [result])
 
