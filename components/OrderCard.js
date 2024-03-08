@@ -1,7 +1,7 @@
-import { Image, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Counter from './Counter'
 import { PALETTE } from '../utils/colorPalette'
+import { timeAgo } from '../utils/dataFormat'
 
 const OrderCard = ({ item }) => {
 
@@ -9,6 +9,7 @@ const OrderCard = ({ item }) => {
     <View style={styles.container}>
       <View style={styles.details}>
         <View style={styles.detailSection}>
+          <Text numberOfLines={1} style={styles.timeAgo}>Hace {timeAgo(item.timestamp)}</Text>
           <Text numberOfLines={1} style={styles.name}>{item.id}</Text>
           <Text style={styles.price}>$ {item.total}</Text>
         </View>
@@ -36,7 +37,6 @@ const styles = StyleSheet.create({
   },
   detailSection: {
     width: '100%',
-    height: 56,
     backgroundColor: PALETTE.white,
     borderRadius: 10,
     padding: 10,
@@ -51,4 +51,8 @@ const styles = StyleSheet.create({
     fontFamily: 'playBold',
     fontSize: 20,
   },
+  timeAgo: {
+    fontFamily: 'playRegular',
+    fontSize: 13,
+  }
 })

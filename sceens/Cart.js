@@ -23,7 +23,7 @@ const Cart = () => {
         total,
         user,
         userId: user.localId,
-        timestamp: Date.now().toLocaleString()
+        timestamp: Date.now()
       }
       triggerPost(order)
     }
