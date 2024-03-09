@@ -10,11 +10,27 @@ import shopIconSolid from '../assets/icons/icon-shop-solid.png'
 import shopIconDisabled from '../assets/icons/icon-shop-disabled.png'
 import orderIconSolid from '../assets/icons/icon-order-solid.png'
 import orderIconDisabled from '../assets/icons/icon-order-disabled.png'
-import { useSelector } from 'react-redux'
+import userIconSolid from '../assets/icons/icon-user-solid.png'
+import userIconDisabled from '../assets/icons/icon-user-disabled.png'
+import { useDispatch, useSelector } from 'react-redux'
+import ProfileStack from './ProfileStack'
+import { useGetProfileImageQuery } from '../services/shopAPI'
+import { useEffect } from 'react'
+import { setProfileImage } from '../features/authSlice'
 
 const Tab = createBottomTabNavigator()
 
 const Navigator = () => {
+  const { user } = useSelector(({ authReducer }) => authReducer.value)
+  const dispatch = useDispatch()
+  const {data, isLoading, error } = useGetProfileImageQuery(user.localId)
+
+  useEffect(() => {
+    if (data) {
+      dispatch(setProfileImage(data.image))
+    }
+  }, [data])
+
   const cart = useSelector(({ cartReducer }) => cartReducer.value.cart)
   const totalQty = cart.reduce((accum, current) => accum += current.qty, 0)
 
@@ -66,6 +82,19 @@ const Navigator = () => {
               <Image
                 style={styles.icon}
                 source={focused ? orderIconSolid : orderIconDisabled} />
+            </View>
+          )
+        }}
+      />
+      <Tab.Screen
+        name='ProfileStack'
+        component={ProfileStack}
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <View>
+              <Image
+                style={styles.icon}
+                source={focused ? userIconSolid : userIconDisabled} />
             </View>
           )
         }}

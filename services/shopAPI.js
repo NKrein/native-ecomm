@@ -24,12 +24,24 @@ export const shopAPI = createApi({
     getOrdersByUserId: builder.query({
       query: (uid) => `orders.json?orderBy="userId"&equalTo="${uid}"`
     }),
+    getProfileImage: builder.query({
+      query: (uid) => `profileImages/${uid}.json`
+    }),
+    postProfileImage: builder.mutation({
+      query: ({ image, uid }) => ({
+        url: `profileImages/${uid}.json`,
+        method: 'PUT',
+        body: { image }
+      })
+    }),
   })
 })
 
-export const { 
-  useGetProductsQuery, 
-  useGetCategoriesQuery, 
-  useGetProductsByCategoryQuery, 
+export const {
+  useGetProductsQuery,
+  useGetCategoriesQuery,
+  useGetProductsByCategoryQuery,
   usePostOrderMutation,
-  useGetOrdersByUserIdQuery } = shopAPI
+  useGetOrdersByUserIdQuery,
+  useGetProfileImageQuery,
+  usePostProfileImageMutation } = shopAPI
