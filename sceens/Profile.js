@@ -24,6 +24,11 @@ const Profile = ({ navigation }) => {
           }
         </Text>
       </Pressable>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('LocationSelector')}>
+        <Text style={styles.buttonText}>
+          Mis direcciones
+        </Text>
+      </Pressable>
     </View>
   )
 }
