@@ -14,22 +14,26 @@ import userIconSolid from '../assets/icons/icon-user-solid.png'
 import userIconDisabled from '../assets/icons/icon-user-disabled.png'
 import { useDispatch, useSelector } from 'react-redux'
 import ProfileStack from './ProfileStack'
-import { useGetProfileImageQuery } from '../services/shopAPI'
+import { useGetProfileImageQuery, useGetUserLocationsListQuery } from '../services/shopAPI'
 import { useEffect } from 'react'
-import { setProfileImage } from '../features/authSlice'
+import { setProfileImage, setUserLocation } from '../features/authSlice'
 
 const Tab = createBottomTabNavigator()
 
 const Navigator = () => {
   const { user } = useSelector(({ authReducer }) => authReducer.value)
   const dispatch = useDispatch()
-  const {data, isLoading, error } = useGetProfileImageQuery(user.localId)
+  const profileImageGet = useGetProfileImageQuery(user.localId)
+  const userLocationGet = useGetUserLocationsListQuery(user.localId)
 
   useEffect(() => {
-    if (data) {
-      dispatch(setProfileImage(data.image))
+    if (profileImageGet.data) {
+      dispatch(setProfileImage(profileImageGet.data.image))
     }
-  }, [data])
+    if (userLocationGet.data) {
+      dispatch(setUserLocation(userLocationGet.data))
+    }
+  }, [profileImageGet, userLocationGet])
 
   const cart = useSelector(({ cartReducer }) => cartReducer.value.cart)
   const totalQty = cart.reduce((accum, current) => accum += current.qty, 0)
@@ -50,6 +54,7 @@ const Navigator = () => {
             <View>
               <Image
                 style={styles.icon}
+                resizeMode='contain'
                 source={focused ? shopIconSolid : shopIconDisabled} />
             </View>
           )
@@ -63,6 +68,7 @@ const Navigator = () => {
             <View>
               <Image
                 style={styles.icon}
+                resizeMode='contain'
                 source={focused ? checkoutIconSolid : checkoutIconDisabled} />
             </View>
           ),
@@ -81,6 +87,7 @@ const Navigator = () => {
             <View>
               <Image
                 style={styles.icon}
+                resizeMode='contain'
                 source={focused ? orderIconSolid : orderIconDisabled} />
             </View>
           )
@@ -94,6 +101,7 @@ const Navigator = () => {
             <View>
               <Image
                 style={styles.icon}
+                resizeMode='contain'
                 source={focused ? userIconSolid : userIconDisabled} />
             </View>
           )

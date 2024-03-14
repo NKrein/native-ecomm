@@ -24,9 +24,9 @@ const Profile = ({ navigation }) => {
           }
         </Text>
       </Pressable>
-      <Pressable style={styles.button} onPress={() => navigation.navigate('LocationSelector')}>
+      <Pressable style={styles.button} onPress={() => navigation.navigate('LocationView')}>
         <Text style={styles.buttonText}>
-          Mis direcciones
+          Ver mi domicilio
         </Text>
       </Pressable>
     </View>
@@ -70,5 +70,4 @@ const styles = StyleSheet.create({
     fontFamily: 'playBold',
     fontSize: 18,
   },
-
 })
