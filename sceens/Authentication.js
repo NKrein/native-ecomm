@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
 import InputForm from '../components/InputForm'
 import { PALETTE } from '../utils/colorPalette'
 import { useLogInMutation, useSignUpMutation } from '../services/authAPI'
@@ -64,11 +64,15 @@ const Authentication = () => {
       if (message.includes('INVALID_LOGIN_CREDENTIALS')) {
         Toast.error('Credenciales inválidas.\nIntente nuevamente.')
       }
-    }  
+    }
   }, [loginResult, signUpResult])
 
   return (
-    <View style={styles.background}>
+    <ScrollView
+      keyboardShouldPersistTaps="handled"
+      scrollEnabled={true}
+      style={{ flex: 1, width: '100%', backgroundColor: PALETTE.white }}
+      contentContainerStyle={styles.background}>
       <View style={styles.container}>
         <Text style={styles.heading}>
           {register ? 'Registrarme' : 'Iniciar sesión'}
@@ -111,7 +115,7 @@ const Authentication = () => {
         </View>
       </View>
       <Loading message='Cargando' isLoading={loginResult.isLoading || signUpResult.isLoading} />
-    </View>
+    </ScrollView>
   )
 }
 

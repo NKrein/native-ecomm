@@ -34,7 +34,7 @@ const LocationView = ({ navigation }) => {
         <View style={styles.addressDetailsContainer}>
           <Image style={styles.icon} source={locationIcon} resizeMode='contain' />
           {userLocation.address.split(', ').map((item, idx) => (
-            <Text style={{ ...styles.cardText, fontSize: 20 - (idx * 2) }}>
+            <Text key={item} style={{ ...styles.cardText, fontSize: 20 - (idx * 2) }}>
               {item}
             </Text>
           ))}
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    minWidth: 40,
+    minWidth: 250,
     minHeight: 40,
     margin: 16,
   },

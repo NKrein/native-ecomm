@@ -2,9 +2,9 @@ import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { googleAPI } from '../firebase/googleAPI'
 
-const MapPreview = ({ location, style, imageResizeMode = 'contain', mapZoom=13 }) => {
+const MapPreview = ({ location, style, imageResizeMode = 'contain', mapZoom = 13 }) => {
 
-  const mapPreviewURL = `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=${mapZoom}&size=300x300&maptype=roadmap&markers=color:blue%7Clabel:%7C${location.latitude},${location.longitude}&key=${googleAPI.mapStatic}`
+  const mapPreviewURL = `https://maps.googleapis.com/maps/api/staticmap?center=${location.latitude},${location.longitude}&zoom=${mapZoom}&size=300x300&maptype=roadmap&markers=color:red%7Clabel:%7C${location.latitude},${location.longitude}&key=${googleAPI.mapStatic}`
 
   return (
     <View style={{ ...styles.container, ...style }}>
