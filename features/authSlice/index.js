@@ -23,7 +23,8 @@ export const authSlice = createSlice({
       state.value = {
         user: null,
         token: null,
-        profileImage: null
+        profileImage: null,
+        userLocation: null,
       }
     },
     setProfileImage: (state, action) => {

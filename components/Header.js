@@ -1,8 +1,24 @@
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import { PALETTE } from '../utils/colorPalette'
 import arrowIcon from '../assets/icons/icon-arrow-left-flame.png'
+import logOutIcon from '../assets/icons/icon-logout-flame.png'
+import { useDispatch, useSelector } from 'react-redux'
+import { clearUser } from '../features/authSlice'
+import { deleteSession } from '../db'
 
 const Header = ({ title, handleBack }) => {
+  const { user } = useSelector(({ authReducer }) => authReducer.value)
+  const dispatch = useDispatch()
+
+  const handleLogOut = async () => {
+    dispatch(clearUser())
+    try {
+      deleteSession({ localId: user.localId })
+    } catch (error) {
+      console.log('Error ->', error)
+    }
+  }
+
   return (
     <View style={styles.background}>
       <View style={styles.container}>
@@ -10,7 +26,12 @@ const Header = ({ title, handleBack }) => {
         <View style={styles.buttonBox}>
           {handleBack &&
             <Pressable style={styles.button} onPress={handleBack}>
-              <Image style={styles.icon} source={arrowIcon} resizeMode='contain'/>
+              <Image style={styles.icon} source={arrowIcon} resizeMode='contain' />
+            </Pressable>
+          }
+          {user &&
+            <Pressable style={styles.logOutButton} onPress={handleLogOut}>
+              <Image style={styles.icon} source={logOutIcon} resizeMode='contain' />
             </Pressable>
           }
         </View>
@@ -43,7 +64,9 @@ const styles = StyleSheet.create({
   },
   buttonBox: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
+    gap: 16,
+    position: 'relative',
   },
   button: {
     justifyContent: 'center',
@@ -58,5 +81,17 @@ const styles = StyleSheet.create({
   icon: {
     width: 25,
     height: 25,
-  }
+  },
+  logOutButton: {
+    position: 'absolute',
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: PALETTE.white,
+    borderColor: PALETTE.flame,
+    borderWidth: 1,
+    borderRadius: 10,
+    minWidth: 40,
+    minHeight: 40,
+  },
 })

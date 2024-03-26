@@ -44,3 +44,16 @@ export const fetchSession = () => {
     })
   })
 }
+
+export const deleteSession = ({ localId }) => {
+  return new Promise((res, rej) => {
+    db.transaction(tx => {
+      tx.executeSql(
+        `DELETE FROM sessions WHERE localId = ?`,
+        [localId],
+        (_, result) => res(result),
+        (_, error) => rej(error)
+      )
+    })
+  })
+}
