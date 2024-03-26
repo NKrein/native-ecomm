@@ -8,6 +8,7 @@ import { setUser } from '../features/authSlice'
 import Loading from '../components/Loading'
 import { loginSchema, signUpSchema } from '../validations'
 import { Toast } from 'toastify-react-native'
+import { insertSession } from '../db'
 
 const Authentication = () => {
 
@@ -41,6 +42,12 @@ const Authentication = () => {
     if (loginResult.isSuccess) {
       const { data } = loginResult
       dispatch(setUser(data))
+      insertSession({
+        email: data.email,
+        localId: data.localId,
+        token: data.idToken
+      })
+        .catch(err => console.log('Error ->', err))
     }
     if (signUpResult.isSuccess) {
       const { data } = signUpResult

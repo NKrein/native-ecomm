@@ -7,6 +7,10 @@ import { Provider } from 'react-redux';
 import store from './store';
 import MainNavigator from './navigation/MainNavigator';
 import ToastManager from 'toastify-react-native';
+import { init } from './db';
+
+init()
+  .catch((err) => console.log('Error ->', err))
 
 export default function App() {
 

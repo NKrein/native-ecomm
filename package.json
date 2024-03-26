@@ -29,7 +29,8 @@
     "yup": "^1.4.0",
     "expo-image-picker": "~14.7.1",
     "expo-file-system": "~16.0.8",
-    "expo-location": "~16.5.5"
+    "expo-location": "~16.5.5",
+    "expo-sqlite": "~13.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
