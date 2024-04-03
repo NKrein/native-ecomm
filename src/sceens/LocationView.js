@@ -2,7 +2,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { PALETTE } from '../utils/colorPalette'
-import locationIcon from '../assets/icons/icon-location-flame.png'
+import locationIcon from '../../assets/icons/icon-location-flame.png'
 import MapPreview from '../components/MapPreview'
 
 const LocationView = ({ navigation }) => {

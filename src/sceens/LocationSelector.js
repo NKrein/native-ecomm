@@ -8,7 +8,7 @@ import Loading from '../components/Loading'
 import { useDispatch, useSelector } from 'react-redux'
 import { setUserLocation } from '../features/authSlice'
 import { usePostUserLocationMutation } from '../services/shopAPI'
-import editIcon from '../assets/icons/icon-edit-flame.png'
+import editIcon from '../../assets/icons/icon-edit-flame.png'
 import { Toast } from 'toastify-react-native'
 
 const LocationSelector = ({ navigation }) => {

@@ -1,13 +1,13 @@
 import { KeyboardAvoidingView, Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import Constants from "expo-constants"
-import { PALETTE } from './utils/colorPalette';
+import { PALETTE } from './src/utils/colorPalette';
 import { useFonts } from 'expo-font';
-import { fonts } from './utils/fonts';
+import { fonts } from './src/utils/fonts';
 import { Provider } from 'react-redux';
-import store from './store';
-import MainNavigator from './navigation/MainNavigator';
+import store from './src/store';
+import MainNavigator from './src/navigation/MainNavigator';
 import ToastManager from 'toastify-react-native';
-import { init } from './db';
+import { init } from './src/db';
 
 init()
   .catch((err) => console.log('Error ->', err))

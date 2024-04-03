@@ -11,7 +11,7 @@ const Profile = ({ navigation }) => {
       <Image
         source={profileImage
           ? { uri: profileImage }
-          : require('../assets/default-profile-image.png')
+          : require('../../assets/default-profile-image.png')
         }
         style={styles.profileImage}
         resizeMode='contain' />

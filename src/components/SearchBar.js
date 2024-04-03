@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { Pressable, Text, TextInput, View, StyleSheet, Image } from "react-native"
+import { Pressable, TextInput, View, StyleSheet, Image } from "react-native"
 import { PALETTE } from "../utils/colorPalette"
-import searchIcon from '../assets/icons/icon-search-flame.png'
-import deleteIcon from '../assets/icons/icon-delete-back-line.png'
+import searchIcon from '../../assets/icons/icon-search-flame.png'
+import deleteIcon from '../../assets/icons/icon-delete-back-line.png'
 
 const SearchBar = ({ handleSearch }) => {
   const [inputValue, setInputValue] = useState('')

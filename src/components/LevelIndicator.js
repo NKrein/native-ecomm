@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View } from 'react-native'
-import beanIcon from '../assets/icons/icon-coffee-bean.png' // cambiar svg por png
-import beanIconSolid from '../assets/icons/icon-coffee-bean-solid.png' // cambiar svg por png
+import beanIcon from '../../assets/icons/icon-coffee-bean.png' // cambiar svg por png
+import beanIconSolid from '../../assets/icons/icon-coffee-bean-solid.png' // cambiar svg por png
 
 const LevelIndicator = ({ level = 0, max }) => {
   const roastLevel = []
