@@ -8,7 +8,7 @@ import OrderCard from '../components/OrderCard'
 
 const Order = () => {
   const { user } = useSelector(({ authReducer }) => authReducer.value)
-  const { data, isLoading, error } = useGetOrdersByUserIdQuery(user.localId)
+  const { data, isLoading, error, refetch, isFetching } = useGetOrdersByUserIdQuery(user.localId)
   const [ordersList, setOrdersList] = useState([])
 
   useEffect(() => {
@@ -25,6 +25,8 @@ const Order = () => {
           <Text style={styles.emptyOrdersText}>No hay ordenes aún</Text>
         </View>
         : <FlatList
+          refreshing={isFetching}
+          onRefresh={refetch}
           data={ordersList}
           renderItem={({ item }) => <OrderCard item={item} />}
           keyExtractor={item => item.id} />

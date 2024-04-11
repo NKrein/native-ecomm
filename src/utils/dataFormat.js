@@ -29,7 +29,7 @@ export const timeAgo = (ms) => {
   } else if (hsAgo(ms) >= 24 && daysAgo(ms) < 30) {
     return `${Math.floor(daysAgo(ms))} dia${Math.floor(daysAgo(ms)) > 1 ? 's' : ''}`
   } else if (daysAgo(ms) >= 30 && monthAgo(ms) < 12) {
-    return `${Math.floor(monthAgo(ms))} mese${Math.floor(monthAgo(ms)) > 1 ? 's' : ''}`
+    return `${Math.floor(monthAgo(ms))} mes${Math.floor(monthAgo(ms)) > 1 ? 'es' : ''}`
   } else if (monthAgo(ms) >= 12) {
     return `${Math.floor(monthAgo(ms) / 12)} año${Math.floor(monthAgo(ms) / 12) > 1 ? 's' : ''}`
   } else {
