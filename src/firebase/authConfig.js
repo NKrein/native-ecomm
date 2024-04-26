@@ -1,2 +1,2 @@
-export const base_url = 'https://identitytoolkit.googleapis.com/v1/'
-export const api_key = 'AIzaSyCc6D35D-uKxj-1E8z4coK1Z3NU3BNZll0'
+export const base_url = process.env.EXPO_PUBLIC_GOOGLE_BASE_URL
+export const api_key = process.env.EXPO_PUBLIC_API_KEY

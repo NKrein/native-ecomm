@@ -1,3 +1,3 @@
 export const googleAPI = {
-  mapStatic: 'AIzaSyAWq5qstIQOuetO2AwU_aPcn6Ek-CCGSkY'
+  mapStatic: process.env.EXPO_PUBLIC_GOOGLE_MAP_STATIC
 }
